@@ -18,21 +18,21 @@ This project follows the **MVVM (Model-View-ViewModel) pattern** to **separate c
 
 ```mermaid
 graph TD
-  subgraph UI["🎭 UI Layer (View)"]
-    MovieList[📜 MovieList.vue]
-    MovieCard[🎴 MovieCard.vue]
-    DetailView[📄 DetailView.vue]
+  subgraph UI["UI Layer (View)"]
+    MovieList["MovieList.vue"]
+    MovieCard["MovieCard.vue"]
+    DetailView["DetailView.vue"]
   end
 
-  subgraph VM["🧠 ViewModel Layer"]
-    MovieStore[📦 Pinia Store (movieStore.ts)]
+  subgraph VM["ViewModel Layer"]
+    MovieStore["Pinia Store (movieStore.ts)"]
   end
 
-  subgraph Data["📡 Data Layer"]
-    API[🌍 TMDb API]
+  subgraph Data["Data Layer"]
+    API["TMDb API"]
   end
 
-  MovieList -->|Fetches| MovieStore
-  DetailView -->|Fetches| MovieStore
+  MovieList -->|Fetches Data| MovieStore
+  DetailView -->|Fetches Data| MovieStore
   MovieStore -->|Calls API| API
   API -->|Returns JSON| MovieStore
